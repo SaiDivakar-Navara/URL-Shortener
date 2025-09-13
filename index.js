@@ -15,6 +15,10 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   port: Number(process.env.DB_PORT) || 3306
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  ssl: { rejectUnauthorized: false }
 });
 
 
@@ -52,5 +56,6 @@ app.get('/:code', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Running at ${BASE_URL}`));
+
 
 
