@@ -10,11 +10,11 @@ const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 // DB connection pool
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'url_shortener'
-  port: process.env.DB_PORT
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT) || 3306
 });
 
 
@@ -52,4 +52,5 @@ app.get('/:code', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Running at ${BASE_URL}`));
+
 
