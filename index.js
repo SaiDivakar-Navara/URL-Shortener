@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+const BASE_URL = process.env.BASE_URL || `https://theurlshortener.onrender.com`;
 
 // DB connection pool
 const pool = mysql.createPool({
@@ -52,6 +52,7 @@ app.get('/:code', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Running at ${BASE_URL}`));
+
 
 
 
