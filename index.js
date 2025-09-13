@@ -14,6 +14,7 @@ const pool = mysql.createPool({
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'url_shortener'
+  port: process.env.DB_PORT
 });
 
 
@@ -51,3 +52,4 @@ app.get('/:code', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Running at ${BASE_URL}`));
+
