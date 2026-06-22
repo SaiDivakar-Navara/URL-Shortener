@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || `https://theurlshortener.onrender.com`;
+const BASE_URL = process.env.BASE_URL || `http://localhost:3000`;
 
 // DB connection pool
 const pool = mysql.createPool({
@@ -16,7 +16,9 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   port: Number(process.env.DB_PORT) || 3306
 });
-
+pool.getConnection()
+  .then(() => console.log('✅ MySQL connected'))
+  .catch(err => console.error('❌ DB connection failed:', err.message));
 
 function generateCode() {
   return crypto.randomBytes(4).toString('hex'); // 8-char code
