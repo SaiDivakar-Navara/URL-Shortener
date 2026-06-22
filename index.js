@@ -53,9 +53,5 @@ app.get('/:code', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Running at ${BASE_URL}`));
-
-
-
-
+app.listen(PORT, '0.0.0.0', () => console.log(`Running at ${BASE_URL}`));
 
